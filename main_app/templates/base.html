@@ -1,0 +1,32 @@
+{ % load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper teal darken-2">
+                <ul>
+                    <li><a href="" class="left brand-logo">&nbsp;&nbsp;Novel Nest</a></li>
+                </ul>
+                <ul class="right">
+                    <!-- changes below -->
+                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer class="page-footer">
+        <div class="right">All Rights Reserved, &copy; 2023 Novel Nest &nbsp;</div>
+    </footer>
+</body>
+</html>
