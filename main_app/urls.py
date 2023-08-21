@@ -7,4 +7,6 @@ urlpatterns = [
     path('genres/', views.GenreList.as_view(), name='genres_index'),
     path('genres/<int:pk>/', views.GenreDetail.as_view(), name='genres_detail'),
     path('genres/<int:genre_id>/payment/', views.addpayment, name='creditcard'),
+    path('creditcards/create', views.create_creditcard,
+         name="creditcard_create")
 ]
