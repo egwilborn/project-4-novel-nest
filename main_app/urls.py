@@ -5,4 +5,5 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('accounts/signup/', views.signup, name='signup'),
     path('genres/', views.GenreList.as_view(), name='genres_index'),
+    path('genres/<int:pk>/', views.GenreDetail.as_view(), name='genres_detail'),
 ]

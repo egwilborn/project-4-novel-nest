@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 from .models import Genre
 
@@ -27,4 +27,7 @@ def signup(request):
     return render (request, 'registration/signup.html', context)
 
 class GenreList(ListView):
+    model = Genre
+
+class GenreDetail(DetailView):
     model = Genre
