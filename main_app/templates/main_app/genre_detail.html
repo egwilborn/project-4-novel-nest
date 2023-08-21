@@ -9,6 +9,7 @@
           <span class="card-title">{{ genre.title }}</span>
           <p>Description: {{ genre.description }}</p>
           <p>Books: </p>
+          <a href="{% url 'creditcard' genre.id %}">Subscribe</a>
         </div>
       </div>
     </div>

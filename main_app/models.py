@@ -7,3 +7,8 @@ class Genre(models.Model):
     description = models.TextField(max_length=500)
     subscribers = models.ManyToManyField(User)
 
+class CreditCard(models.Model):
+    number = models.IntegerField()
+    expiry = models.DateField('Expiration Date')
+    cvv = models.IntegerField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
