@@ -49,10 +49,13 @@ class GenreDetail(DetailView):
 def create_creditcard(request):
     form = CreditCardForm(request.POST)
     if form.is_valid():
-        print(request.user.id)
         new_creditcard = form.save(commit=False)
         new_creditcard.user_id = request.user.id
         new_creditcard.save()
     else:
         return redirect("/")
     return redirect("genres_index")
+
+def profile(request, ):
+    user_creditcard = CreditCard.objects.get(user=request.user.id)
+    return render(request, 'profile.html', {'user_creditcard': user_creditcard})

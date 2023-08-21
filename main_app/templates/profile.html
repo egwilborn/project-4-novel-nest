@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>{{ user.username }} Profile</h1>
+<div class="card">
+    <div class="card-content">
+        <span>Credit Card on file: **********</span>
+        <p>{{ user_creditcard.expiry }}</p>
+    </div>
+</div>
+
+{% endblock %}
