@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Subscribe to {{genre.title}} Genre</h1>
+
+<form action="{% url 'creditcard_create' %}" method="POST">
+  {% csrf_token %} {{ credit_card_form.as_p }}
+  <input type="submit" class="btn" value="Add Credit Card" />
+</form>
+<script>
+  const dateEl = document.getElementById("id_expiry");
+  M.Datepicker.init(dateEl, {
+    format: "yyyy-mm-dd",
+    defaultDate: new Date(),
+    setDefaultDate: true,
+    autoClose: true,
+  });
+</script>
+{% endblock content %}

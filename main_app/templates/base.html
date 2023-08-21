@@ -5,33 +5,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Novel Nest</title>
+    <title>Document</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
 <body>
     <header class="navbar-fixed">
-        <nav>
-            <div class="nav-wrapper teal darken-2">
-                <ul>
-                    <li><a href="" class="left brand-logo">&nbsp;&nbsp;Novel Nest</a></li>
-                </ul>
-                <ul class="right">
-                    <!-- changes below -->
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
-                    <li><a href="{% url 'genres_index' %}">Genres</a></li>
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
-                </ul>
-            </div>
-        </nav>
+      <nav>
+        <div class="nav-wrapper teal darken-2">
+          <ul>
+            <li>
+              <a href="" class="left brand-logo">&nbsp;&nbsp;Novel Nest</a>
+            </li>
+          </ul>
+          <ul class="right">
+            <!-- changes below -->
+            <li><a href="{% url 'logout' %}">Log Out</a></li>
+            <li><a href="{% url 'genres_index' %}">Genres</a></li>
+            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            <li><a href="{% url 'login' %}">Log In</a></li>
+          </ul>
+        </div>
+      </nav>
     </header>
-    <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main>
+    <main class="container">{% block content %} {% endblock %}</main>
     <footer class="page-footer">
-        <div class="right">All Rights Reserved, &copy; 2023 Novel Nest &nbsp;</div>
+      <div class="right">
+        All Rights Reserved, &copy; 2023 Novel Nest &nbsp;
+      </div>
     </footer>
-</body>
+  </body>
 </html>
