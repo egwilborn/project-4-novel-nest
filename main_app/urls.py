@@ -9,6 +9,10 @@ urlpatterns = [
     path('genres/<int:genre_id>/payment/', views.addpayment, name='creditcard'),
     path('creditcards/create', views.create_creditcard, name='creditcard_create'),
     path('profile/', views.profile, name='profile'),
-    path('genres/<int:genre_id>/creditcards/<int:creditcard_id>', views.assoc_genre, name='assoc_genre'),
-    path('genres/<int:genre_id>/delete/', views.genre_remove, name='genre_remove'),
+    path('genres/<int:genre_id>/creditcards/<int:creditcard_id>',
+         views.assoc_genre, name='assoc_genre'),
+    path('genres/<int:genre_id>/delete/',
+         views.genre_remove, name='genre_remove'),
+    path('creditcards/<int:pk>/delete/',
+         views.delete_credit_card, name="credit_card_delete")
 ]
