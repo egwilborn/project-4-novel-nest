@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, DeleteView
 
 from .models import Genre, CreditCard
 from .forms import CreditCardForm
@@ -64,6 +64,7 @@ def create_creditcard(request):
 
 
 def profile(request, ):
+    credit_card_form = CreditCardForm()
     try:
         user_credit_card = CreditCard.objects.filter(user=request.user.id)
     except Exception as e:
@@ -73,7 +74,11 @@ def profile(request, ):
         user_genre = Genre.objects.filter(subscribers=request.user.id)
     except Exception as e:
         user_genre = 0
-    return render(request, 'profile.html', {'user_credit_card': user_credit_card, 'user_genre': user_genre})
+    return render(request, 'profile.html', {
+        'user_credit_card': user_credit_card,
+        'user_genre': user_genre,
+        'credit_card_form': credit_card_form
+    })
 
 
 def assoc_genre(request, genre_id, creditcard_id):
@@ -91,3 +96,21 @@ def genre_remove(request, genre_id):
         user=request.user.id).get(genres=genre_id)
     creditcard.genres.remove(genre_id)
     return redirect('profile')
+
+
+def delete_credit_card(request, pk):
+    if request.method == "POST":
+        # we need to remove the logged in user from all the genres associated with the credit card
+        # we find the credit card entry in the db
+        credit_card = CreditCard.objects.get(id=pk)
+        # we make a list of genre ids
+        id_list = credit_card.genres.all().values_list('id')
+        credit_card_genres = Genre.objects.filter(id__in=id_list)
+        for genre in credit_card_genres:
+            genre.subscribers.remove(request.user.id)
+        CreditCard.objects.get(id=pk).delete()
+        return redirect('profile')
+    else:
+        object = CreditCard.objects.get(id=pk)
+        return render(request, "main_app/creditcard_confirm_delete.html",
+                      {'object': object})

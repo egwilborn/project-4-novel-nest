@@ -10,6 +10,17 @@
     <span>Credit Card on file: **********</span>
     <p>Expiry: {{ credit_card.expiry }}</p>
     <p>Card Id Number: {{ credit_card.id }}</p>
+    <p>Subscribed to:</p>
+    <ul>
+      {% for genre in credit_card.genres.all%}
+      <li>{{genre.title}}</li>
+      {% endfor %}
+    </ul>
+    <div class="card-action">
+      <a href="{% url 'credit_card_delete' credit_card.id %}"
+        >Delete Credit Card</a
+      >
+    </div>
   </div>
 </div>
 {% endfor %} {% else %}
@@ -35,13 +46,13 @@
 <div class="card">
   <div class="card-content">
     <span class="card-title">{{ genre.title }}</span>
-    <p>{{ genre.description }}<p>
+    <p>{{ genre.description }}</p>
+    <p></p>
     <div class="card-action">
-        <a href="{% url 'genre_remove' genre.id %}">Remove Subscription</a>
+      <a href="{% url 'genre_remove' genre.id %}">Remove Subscription</a>
     </div>
   </div>
 </div>
-  {% endfor %} {% else %}
-  <p>No Genres Subscribed Yet</p>
-{%endif%}
-{% endblock %}
+{% endfor %} {% else %}
+<p>No Genres Subscribed Yet</p>
+{%endif%} {% endblock %}

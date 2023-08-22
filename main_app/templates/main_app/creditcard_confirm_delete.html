@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block content %}
+<h1>Delete Credit Card</h1>
+<h5>
+  {% if object.genres %}
+  <p>You are using this card to subscribe to these genres:</p>
+  <ul>
+    {% for genre in object.genres.all %}
+    <li>{{genre.title}}</li>
+    {% endfor %}
+  </ul>
+  <p>If you continue with deletion, you may need to resubscribe.</p>
+  {% else %}
+  <p>You have no subscriptions using this credit card.</p>
+  {% endif %}
+  <p>Are you sure you want to delete</p>
+  <span class="green-text darker-3">Credit Card ID {{object.id}}</span>?
+</h5>
+<form action="{% url 'credit_card_delete' object.id %}" method="POST">
+  {% csrf_token %}
+  <input type="submit" value="Yes - Delete" class="btn" />
+  <a href="{% url 'profile' %}"> Cancel </a>
+</form>
+
+{% endblock content %}
