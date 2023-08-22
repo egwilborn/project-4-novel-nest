@@ -36,6 +36,9 @@
   <div class="card-content">
     <span class="card-title">{{ genre.title }}</span>
     <p>{{ genre.description }}<p>
+    <div class="card-action">
+        <a href="{% url 'genre_remove' genre.id %}">Remove Subscription</a>
+    </div>
   </div>
 </div>
   {% endfor %} {% else %}

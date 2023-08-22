@@ -82,3 +82,10 @@ def assoc_genre(request, genre_id, creditcard_id):
     genre = Genre.objects.get(id=genre_id)
     genre.subscribers.add(request.user.id)
     return redirect('profile')
+
+def genre_remove(request, genre_id):
+    genre = Genre.objects.get(id=genre_id)
+    genre.subscribers.remove(request.user.id)
+    creditcard = CreditCard.objects.filter(user = request.user.id).get(genres = genre_id)
+    creditcard.genres.remove(genre_id)
+    return redirect('profile')
