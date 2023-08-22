@@ -35,7 +35,13 @@ def signup(request):
 def addpayment(request, genre_id):
     genre = Genre.objects.get(id=genre_id)
     credit_card_form = CreditCardForm()
-    return render(request, 'main_app/creditcard_form.html', {'genre': genre, 'credit_card_form': credit_card_form})
+    try:
+        user_credit_card = CreditCard.objects.filter(user=request.user.id)
+    except Exception as e:
+        user_credit_card = 0
+        print(e)
+
+    return render(request, 'main_app/creditcard_form.html', {'genre': genre, 'credit_card_form': credit_card_form, 'user_credit_card': user_credit_card})
 
 
 class GenreList(ListView):
@@ -55,6 +61,7 @@ def create_creditcard(request):
     else:
         return redirect("/")
     return redirect("genres_index")
+
 
 def profile(request, ):
     user_creditcard = CreditCard.objects.get(user=request.user.id)
