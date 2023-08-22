@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import ListView, DetailView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, DeleteView
 
 from .models import Genre, CreditCard
@@ -31,7 +33,7 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
-
+@login_required
 def addpayment(request, genre_id):
     genre = Genre.objects.get(id=genre_id)
     credit_card_form = CreditCardForm()
@@ -44,14 +46,14 @@ def addpayment(request, genre_id):
     return render(request, 'main_app/creditcard_form.html', {'genre': genre, 'credit_card_form': credit_card_form, 'user_credit_card': user_credit_card})
 
 
-class GenreList(ListView):
+class GenreList(LoginRequiredMixin, ListView):
     model = Genre
 
 
-class GenreDetail(DetailView):
+class GenreDetail(LoginRequiredMixin, DetailView):
     model = Genre
 
-
+@login_required
 def create_creditcard(request):
     form = CreditCardForm(request.POST)
     if form.is_valid():
@@ -62,8 +64,8 @@ def create_creditcard(request):
         return redirect("/")
     return redirect("genres_index")
 
-
-def profile(request, ):
+@login_required
+def profile(request):
     credit_card_form = CreditCardForm()
     try:
         user_credit_card = CreditCard.objects.filter(user=request.user.id)
@@ -80,7 +82,7 @@ def profile(request, ):
         'credit_card_form': credit_card_form
     })
 
-
+@login_required
 def assoc_genre(request, genre_id, creditcard_id):
     creditcard = CreditCard.objects.get(id=creditcard_id)
     creditcard.genres.add(genre_id)
@@ -88,7 +90,7 @@ def assoc_genre(request, genre_id, creditcard_id):
     genre.subscribers.add(request.user.id)
     return redirect('profile')
 
-
+@login_required
 def genre_remove(request, genre_id):
     genre = Genre.objects.get(id=genre_id)
     genre.subscribers.remove(request.user.id)
@@ -97,7 +99,7 @@ def genre_remove(request, genre_id):
     creditcard.genres.remove(genre_id)
     return redirect('profile')
 
-
+@login_required
 def delete_credit_card(request, pk):
     if request.method == "POST":
         # we need to remove the logged in user from all the genres associated with the credit card
