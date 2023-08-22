@@ -6,7 +6,7 @@
   <div class="card-content">
     <p>Card No. *********</p>
     <p>Expiration Date {{credit_card.expiry}}</p>
-    <form action="">
+    <form action="{% url 'assoc_genre' genre.id credit_card.id %}">
       <button type="submit">Subscribe</button>
     </form>
   </div>

@@ -66,3 +66,11 @@ def create_creditcard(request):
 def profile(request, ):
     user_creditcard = CreditCard.objects.get(user=request.user.id)
     return render(request, 'profile.html', {'user_creditcard': user_creditcard})
+
+
+def assoc_genre(request, genre_id, creditcard_id):
+    creditcard = CreditCard.objects.get(id=creditcard_id)
+    creditcard.genres.add(genre_id)
+    genre = Genre.objects.get(id=genre_id)
+    genre.subscribers.add(request.user.id)
+    return redirect('profile')
