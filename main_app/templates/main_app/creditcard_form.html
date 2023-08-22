@@ -1,6 +1,21 @@
 {% extends 'base.html' %} {% block content %}
 <h1>Subscribe to {{genre.title}} Genre</h1>
 
+{% if user_credit_card %} {% for credit_card in user_credit_card %}
+<div class="card">
+  <div class="card-content">
+    <p>Card No. *********</p>
+    <p>Expiration Date {{credit_card.expiry}}</p>
+    <form action="">
+      <button type="submit">Subscribe</button>
+    </form>
+  </div>
+</div>
+
+{% endfor %} {% else %}
+<p>No credit cards on file. Please add one.</p>
+{% endif %}
+
 <form action="{% url 'creditcard_create' %}" method="POST">
   {% csrf_token %} {{ credit_card_form.as_p }}
   <input type="submit" class="btn" value="Add Credit Card" />
