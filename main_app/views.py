@@ -63,17 +63,13 @@ def create_creditcard(request):
     return redirect("genres_index")
 
 
-def profile(request):
+def profile(request, ):
     try:
         user_credit_card = CreditCard.objects.filter(user=request.user.id)
     except Exception as e:
         user_credit_card = 0
-            
-    try:
-        user_genre = Genre.objects.filter(subscribers = request.user.id)
-    except Exception as e:
-        user_genre = 0 
-    return render(request, 'profile.html', {'user_credit_card': user_credit_card, 'user_genre': user_genre})
+        print(e)
+    return render(request, 'profile.html', {'user_credit_card': user_credit_card})
 
 
 def assoc_genre(request, genre_id, creditcard_id):
@@ -81,4 +77,11 @@ def assoc_genre(request, genre_id, creditcard_id):
     creditcard.genres.add(genre_id)
     genre = Genre.objects.get(id=genre_id)
     genre.subscribers.add(request.user.id)
+    return redirect('profile')
+
+def genre_remove(request, genre_id):
+    genre = Genre.objects.get(id=genre_id)
+    genre.subscribers.remove(request.user.id)
+    creditcard = CreditCard.objects.filter(user = request.user.id).get(genres = genre_id)
+    creditcard.genres.remove(genre_id)
     return redirect('profile')
