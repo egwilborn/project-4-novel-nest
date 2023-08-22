@@ -12,3 +12,4 @@ class CreditCard(models.Model):
     expiry = models.DateField('Expiration Date')
     cvv = models.IntegerField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    genres = models.ManyToManyField(Genre)
