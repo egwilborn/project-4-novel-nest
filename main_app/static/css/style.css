@@ -12,4 +12,32 @@ body {
     padding-top: 0;
     text-align: right;
   }
+
+  .page-footer{
+    color: black;
+  }
+  
+  .card {
+    box-shadow: 1vim slategrey;
+    border-radius: 1vmin;
+    background-color: lemonchiffon;
+    color: black;
+  }
+
+  .card:hover{
+    box-shadow: 1vmin 1vmin 1vmin 1vmin slategrey;
+    border-radius: 2vmin;
+  }
+
+  a{
+    color: blue;
+  }
+
+  .button{
+    background-color: ;
+  }
+
+  .button:hover{
+    background-color: rgb(127, 227, 249);
+  }
   
