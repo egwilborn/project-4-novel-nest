@@ -1,18 +1,37 @@
-{% extends 'base.html' %}
-{% block content %}
+{% extends 'base.html' %} {% block content %}
 <h1>Genre Detail</h1>
 
 <div class="row">
-    <div class="col s6 col-offset-3">
-      <div class="card">
-        <div class="card-content">
-          <span class="card-title">{{ genre.title }}</span>
-          <p>Description: {{ genre.description }}</p>
-          <p>Books: </p>
-          <a href="{% url 'creditcard' genre.id %}">Subscribe</a>
-        </div>
+  <div class="col s6 col-offset-3">
+    <div class="card">
+      <div class="card-content">
+        <span class="card-title">{{ genre.title }}</span>
+        <p>Description: {{ genre.description }}</p>
+        <p>Books:</p>
+        <a href="{% url 'creditcard' genre.id %}">Subscribe</a>
       </div>
     </div>
   </div>
+</div>
+
+<div class="row">
+  {% for item in data.items %}
+  <div class="col s4">
+    <div class="card">
+      <div class="card-content center">
+        <img
+          src="{{item.volumeInfo.imageLinks.smallThumbnail}}"
+          alt="book thumbnail"
+        />
+        <br />
+        <span class="card-title">{{ item.volumeInfo.title }}</span>
+        by {% for author in item.volumeInfo.authors %}
+        <span>{{ author }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
 {% endblock %}

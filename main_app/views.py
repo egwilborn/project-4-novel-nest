@@ -5,9 +5,11 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView, DeleteView
+from django.views.generic import TemplateView
 
 from .models import Genre, CreditCard
 from .forms import CreditCardForm
+import requests
 
 # Create your views here.
 
@@ -33,6 +35,7 @@ def signup(request):
     context = {'form': form, 'error_message': error_message}
     return render(request, 'registration/signup.html', context)
 
+
 @login_required
 def addpayment(request, genre_id):
     genre = Genre.objects.get(id=genre_id)
@@ -53,6 +56,22 @@ class GenreList(LoginRequiredMixin, ListView):
 class GenreDetail(LoginRequiredMixin, DetailView):
     model = Genre
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # Obtain the pk value from the URL kwargs
+        pk_value = self.kwargs['pk']
+
+        genre = Genre.objects.get(id=pk_value)
+        genre_title = genre.title
+        key_word = genre_title.replace(" ", "_")
+
+        url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{key_word}&printType=books&key=AIzaSyByQxL6mHiDUzsnosow3-ZDL93vt9NIHKs"
+        response = requests.get(url)
+        data = response.json()
+        context['data'] = data
+        return context
+
+
 @login_required
 def create_creditcard(request):
     form = CreditCardForm(request.POST)
@@ -63,6 +82,7 @@ def create_creditcard(request):
     else:
         return redirect("/")
     return redirect("genres_index")
+
 
 @login_required
 def profile(request):
@@ -82,6 +102,7 @@ def profile(request):
         'credit_card_form': credit_card_form
     })
 
+
 @login_required
 def assoc_genre(request, genre_id, creditcard_id):
     creditcard = CreditCard.objects.get(id=creditcard_id)
@@ -89,6 +110,7 @@ def assoc_genre(request, genre_id, creditcard_id):
     genre = Genre.objects.get(id=genre_id)
     genre.subscribers.add(request.user.id)
     return redirect('profile')
+
 
 @login_required
 def genre_remove(request, genre_id):
@@ -98,6 +120,7 @@ def genre_remove(request, genre_id):
         user=request.user.id).get(genres=genre_id)
     creditcard.genres.remove(genre_id)
     return redirect('profile')
+
 
 @login_required
 def delete_credit_card(request, pk):
