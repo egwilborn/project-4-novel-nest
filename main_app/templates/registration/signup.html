@@ -1,14 +1,21 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<h1>Sign Up</h1>
-
-<p class="red-text">{{ error_message }}</p>
-
-<form method="POST" action="{% url 'signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" class="btn" value="Sign Up">
-</form>
+<div class="container" id="signup-page">
+  <div
+    class="card"
+    style="width: 60vw; color: black; background-color: lemonchiffon"
+  >
+  <div class="card-content">
+    <span class="card-title center">Sign Up</span>
+    <p class="red-text">{{ error_message }}</p>
+    <form method="POST" action="{% url 'signup' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input type="submit" class="btn" value="Sign Up">
+    </form>
+    <p>Already have an account?</p><a href="{% url 'login' %}">Login</a>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
