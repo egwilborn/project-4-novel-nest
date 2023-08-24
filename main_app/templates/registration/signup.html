@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="container" id="signup-page">
-  <div
-    class="card"
-    style="width: 60vw; color: black; background-color: lemonchiffon"
-  >
+<div class="container" style="
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+" id="signup-page">
+  <div style="width: 100%; color: black; margin-bottom: 10px">
   <div class="card-content">
     <span class="card-title center">Sign Up</span>
     <p class="red-text">{{ error_message }}</p>
