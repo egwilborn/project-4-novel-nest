@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    margin: 0;
     font-family: Arial, sans-serif;
     justify-content: center;
   }
@@ -65,4 +66,25 @@ body {
     color: black;
     background-color: white;
   }
-  
+
+  .image {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.image img {
+  vertical-align: middle;
+  max-width: 100%;
+  height: auto; 
+}
+
+.image .content {
+  position: absolute;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #f1f1f1;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box; 
+}  
