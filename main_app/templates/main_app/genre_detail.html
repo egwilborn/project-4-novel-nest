@@ -28,12 +28,12 @@ flex-wrap: wrap;
     <div class="card">
       <div class="card-content center">
         <div class="card-image">
-          <img src="{{ item.volumeInfo.imageLinks.smallThumbnail }}" alt="book thumbnail" />
+          <img style="height: 220px; " src="{{ item.volumeInfo.imageLinks.smallThumbnail }}" alt="book thumbnail" />
         </div>
-        <span class="card-title">{{ item.volumeInfo.title }}</span>
+        <span style="height: 52px; margin-bottom: 5px;" class="card-title">{{ item.volumeInfo.title }}</span>
         by
         {% for author in item.volumeInfo.authors %}
-        <span>{{ author }}</span>{% if not loop.last %}, {% endif %}
+        <span style="margin-top: 5px;">{{ author }}</span>{% if not loop.last %}, {% endif %}
         {% endfor %}
       </div>
     </div>
