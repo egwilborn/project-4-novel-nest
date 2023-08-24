@@ -14,23 +14,33 @@
   </div>
 </div>
 
-<div class="row">
+
+
+<div class="row" style="
+display: flex;
+flex-direction: row;
+justify-content: space-evenly;
+align-items: center;
+flex-wrap: wrap;
+">
   {% for item in data.items %}
   <div class="col s4">
     <div class="card">
       <div class="card-content center">
-        <img
-          src="{{item.volumeInfo.imageLinks.smallThumbnail}}"
-          alt="book thumbnail"
-        />
-        <br />
+        <div class="card-image">
+          <img src="{{ item.volumeInfo.imageLinks.smallThumbnail }}" alt="book thumbnail" />
+        </div>
         <span class="card-title">{{ item.volumeInfo.title }}</span>
-        by {% for author in item.volumeInfo.authors %}
-        <span>{{ author }}</span>
+        by
+        {% for author in item.volumeInfo.authors %}
+        <span>{{ author }}</span>{% if not loop.last %}, {% endif %}
         {% endfor %}
       </div>
     </div>
   </div>
+  {% if loop.counter|divisibleby:3 and not forloop.last %}
+</div><div class="row">
+  {% endif %}
   {% endfor %}
 </div>
 

@@ -2,6 +2,8 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: Arial, sans-serif;
+    justify-content: center;
   }
   
   main {
@@ -16,12 +18,24 @@ body {
   .page-footer{
     color: black;
   }
+
+  .nav-wrapper ul li a {
+    color: black;
+  }
+  
   
   .card {
-    box-shadow: 1vim slategrey;
+    box-shadow: 4px 4px 4px 4px slategrey;
+    text-align: center;
+    padding: 16px;
     border-radius: 1vmin;
     background-color: lemonchiffon;
     color: black;
+    transition: all 0.3s ease;
+  }
+
+  #credit_card{
+    width: 40vw;
   }
 
   .card:hover{
@@ -34,10 +48,21 @@ body {
   }
 
   .button{
-    background-color: 
+    background-color: rgb(127, 227, 249);
   }
 
   .button:hover{
+    color: black;
+    background-color: white;
+  }
+
+  .btn{
+    color: black;
     background-color: rgb(127, 227, 249);
+  }
+
+  .btn:hover{
+    color: black;
+    background-color: white;
   }
   
