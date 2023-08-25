@@ -1,46 +1,60 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>{{ user.username }} Profile</h1>
+<h1 style="padding: 20px 20px 50px 20px; text-align: center">
+  {{ user.username }} Profile
+</h1>
 
 <h3>Credit Card Info</h3>
 
-{% if user_credit_card %} {% for credit_card in user_credit_card %}
-<div class="card">
-  <div class="card-content">
-    <span>Credit Card on file: **********</span>
-    <p>Expiry: {{ credit_card.expiry }}</p>
-    <p>Card Id Number: {{ credit_card.id }}</p>
-    <p>Subscribed to:</p>
-    <ul>
-      {% for genre in credit_card.genres.all%}
-      <li>{{genre.title}}</li>
-      {% endfor %}
-    </ul>
-    <div class="card-action">
-      <a href="{% url 'credit_card_delete' credit_card.id %}"
-        >Delete Credit Card</a
-      >
+<div
+  class="container"
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  {% if user_credit_card %} {% for credit_card in user_credit_card %}
+  <div class="card" id="credit_card" style="background-color: white">
+    <div class="card-content">
+      <span>Credit Card on file: **********</span>
+      <p>Expiry: {{ credit_card.expiry }}</p>
+      <p>Card Id Number: {{ credit_card.id }}</p>
+      <p>Subscribed to:</p>
+      <ul>
+        {% for genre in credit_card.genres.all%}
+        <li>{{genre.title}}</li>
+        {% endfor %}
+      </ul>
+      <div class="card-action">
+        <a href="{% url 'credit_card_delete' credit_card.id %}"
+          >Delete Credit Card</a
+        >
+      </div>
     </div>
   </div>
+  {% endfor %} {% else %}
+  <p>No credit cards on file. Please add one.</p>
+  <div class="card" id="credit_card" style="background-color: white">
+    <div class="card-content">
+      <form action="{% url 'creditcard_create' %}" method="POST">
+        {% csrf_token %} {{ credit_card_form.as_p }}
+        <input type="submit" class="btn" value="Add Credit Card" />
+      </form>
+      <script>
+        const dateEl = document.getElementById("id_expiry");
+        M.Datepicker.init(dateEl, {
+          format: "yyyy-mm-dd",
+          defaultDate: new Date(),
+          setDefaultDate: true,
+          autoClose: true,
+        });
+      </script>
+    </div>
+  </div>
+  {% endif %}
 </div>
-{% endfor %} {% else %}
-<p>No credit cards on file. Please add one.</p>
-
-<form action="{% url 'creditcard_create' %}" method="POST">
-  {% csrf_token %} {{ credit_card_form.as_p }}
-  <input type="submit" class="btn" value="Add Credit Card" />
-</form>
-<script>
-  const dateEl = document.getElementById("id_expiry");
-  M.Datepicker.init(dateEl, {
-    format: "yyyy-mm-dd",
-    defaultDate: new Date(),
-    setDefaultDate: true,
-    autoClose: true,
-  });
-</script>
-{% endif %}
-
 <h3>Subscribed Genres</h3>
 {% if user_genre %} {% for genre in user_genre %}
 <div class="card">

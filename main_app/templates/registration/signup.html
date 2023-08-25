@@ -1,21 +1,23 @@
-{% extends 'base.html' %}
-{% block content %}
-<div class="container" style="
-display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-" id="signup-page">
-  <div style="width: 100%; color: black; margin-bottom: 10px">
-  <div class="card-content">
-    <span class="card-title center">Sign Up</span>
-    <p class="red-text">{{ error_message }}</p>
-    <form method="POST" action="{% url 'signup' %}">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" class="btn" value="Sign Up">
-    </form>
-    <p>Already have an account?</p><a href="{% url 'login' %}">Login</a>
+{% extends 'base.html' %} {% block content %}
+<div
+  class="container"
+  style="
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  "
+  id="signup-page"
+>
+  <div style="width: 100%; color: black; padding-top: 20px">
+    <div class="card-content">
+      <span style="font-size: 3vw" class="card-title center">Sign Up</span>
+      <p class="red-text">{{ error_message }}</p>
+      <form method="POST" action="{% url 'signup' %}">
+        {% csrf_token %} {{ form.as_p }}
+        <input type="submit" class="btn" value="Sign Up" />
+      </form>
+      <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
     </div>
   </div>
 </div>
