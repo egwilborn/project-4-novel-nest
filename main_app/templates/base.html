@@ -21,15 +21,17 @@
   <body>
     <header class="navbar-fixed">
       <nav>
-        <div class="nav-wrapper  cyan lighten-2">
+        <div class="nav-wrapper cyan lighten-2">
           <ul>
             <li>
-              <a href="{% url 'login' %}" class="left brand-logo">&nbsp;&nbsp;Novel Nest</a>
+              <a href="{% url 'home' %}" class="left brand-logo"
+                >&nbsp;&nbsp;Novel Nest</a
+              >
             </li>
           </ul>
           <ul class="right">
             <!-- changes below -->
-             {% if user.is_authenticated %}
+            {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}">Log Out</a></li>
             <li><a href="{% url 'profile' %}">Profile</a></li>
             <li><a href="{% url 'genres_index' %}">Genres</a></li>
@@ -42,7 +44,7 @@
       </nav>
     </header>
     <main class="container">{% block content %} {% endblock %}</main>
-    <footer class="page-footer  cyan lighten-2">
+    <footer class="page-footer cyan lighten-2">
       <div class="right">
         All Rights Reserved, &copy; 2023 Novel Nest &nbsp;
       </div>

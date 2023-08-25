@@ -14,34 +14,38 @@
   </div>
 </div>
 
-
-
-<div class="row" style="
-display: flex;
-flex-direction: row;
-justify-content: space-evenly;
-align-items: center;
-flex-wrap: wrap;
-">
+<div
+  class="row"
+  style="
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+  "
+>
   {% for item in data.items %}
   <div class="col s4">
     <div class="card">
       <div class="card-content center">
         <div class="card-image">
-          <img style="height: 220px; " src="{{ item.volumeInfo.imageLinks.smallThumbnail }}" alt="book thumbnail" />
+          <img
+            style="height: 220px"
+            src="{{ item.volumeInfo.imageLinks.smallThumbnail }}"
+            alt="book thumbnail"
+          />
         </div>
-        <span style="height: 52px; margin-bottom: 5px;" class="card-title">{{ item.volumeInfo.title }}</span>
-        by
-        {% for author in item.volumeInfo.authors %}
-        <span style="margin-top: 5px;">{{ author }}</span>{% if not loop.last %}, {% endif %}
-        {% endfor %}
+        <span style="height: 52px; margin-bottom: 5px" class="card-title"
+          >{{ item.volumeInfo.title }}</span
+        >
+        by {% for author in item.volumeInfo.authors %}
+        <span style="margin-top: 5px">{{ author }}</span>{% if not loop.last %},
+        {% endif %} {% endfor %}
       </div>
     </div>
   </div>
   {% if loop.counter|divisibleby:3 and not forloop.last %}
-</div><div class="row">
-  {% endif %}
-  {% endfor %}
 </div>
+<div class="row">{% endif %} {% endfor %}</div>
 
 {% endblock %}
