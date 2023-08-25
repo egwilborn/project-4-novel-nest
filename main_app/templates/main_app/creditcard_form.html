@@ -28,7 +28,7 @@
 
 <form action="{% url 'creditcard_create' %}" method="POST">
   {% csrf_token %} {{ credit_card_form.as_p }}
-  <input type="submit" class="btn" value="Add Credit Card" />
+  <input type="submit" class="btn" value="Add Credit Card" style="margin-bottom: 10px;"/>
 </form>
 <script>
   const dateEl = document.getElementById("id_expiry");
