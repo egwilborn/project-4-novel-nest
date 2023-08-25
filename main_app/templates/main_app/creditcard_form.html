@@ -2,13 +2,23 @@
 <h1>Subscribe to {{genre.title}} Genre</h1>
 
 {% if user_credit_card %} {% for credit_card in user_credit_card %}
-<div class="card" id="credit_card">
-  <div class="card-content">
-    <p>Card No. *********</p>
-    <p>Expiration Date {{credit_card.expiry}}</p>
-    <form action="{% url 'assoc_genre' genre.id credit_card.id %}">
-      <button class="button" type="submit">Subscribe</button>
-    </form>
+<div
+  class="container"
+  style="
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <div class="card" id="credit_card" style="background-color: white">
+    <div class="card-content">
+      <p>Card No. *********</p>
+      <p>Expiration Date {{credit_card.expiry}}</p>
+      <form action="{% url 'assoc_genre' genre.id credit_card.id %}">
+        <button class="button" type="submit">Subscribe</button>
+      </form>
+    </div>
   </div>
 </div>
 

@@ -1,74 +1,74 @@
 body {
-    display: flex;
-    min-height: 100vh;
-    flex-direction: column;
-    margin: 0;
-    font-family: Arial, sans-serif;
-    justify-content: center;
-  }
-  
-  main {
-    flex: 1 0 auto;
-  }
-  
-  footer.page-footer {
-    padding-top: 0;
-    text-align: right;
-  }
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  justify-content: center;
+  background-color: snow;
+  background-image: radial-gradient(snow, powderblue);
+}
 
-  .page-footer{
-    color: black;
-  }
+main {
+  flex: 1 0 auto;
+}
 
-  .nav-wrapper ul li a {
-    color: black;
-  }
-  
-  
-  .card {
-    box-shadow: 4px 4px 4px 4px slategrey;
-    text-align: center;
-    padding: 16px;
-    border-radius: 1vmin;
-    background-color: lemonchiffon;
-    color: black;
-    transition: all 0.3s ease;
-  }
+footer.page-footer {
+  padding-top: 0;
+  text-align: right;
+}
 
+.page-footer {
+  color: black;
+}
 
-  #credit_card{
-    width: 40vw;
-  }
+.nav-wrapper ul li a {
+  color: black;
+}
 
-  .card:hover{
-    box-shadow: 1vmin 1vmin 1vmin 1vmin slategrey;
-    border-radius: 2vmin;
-  }
+.card {
+  box-shadow: 4px 4px 4px 4px slategrey;
+  text-align: center;
+  padding: 16px;
+  border-radius: 1vmin;
+  background-color: lemonchiffon;
+  color: black;
+  transition: all 0.3s ease;
+}
 
-  a{
-    color: blue;
-  }
+#credit_card {
+  width: 40vw;
+}
 
-  .button{
-    background-color: rgb(127, 227, 249);
-  }
+.card:hover {
+  box-shadow: 1vmin 1vmin 1vmin 1vmin slategrey;
+  border-radius: 2vmin;
+}
 
-  .button:hover{
-    color: black;
-    background-color: white;
-  }
+a {
+  color: blue;
+}
 
-  .btn{
-    color: black;
-    background-color: rgb(127, 227, 249);
-  }
+.button {
+  background-color: rgb(127, 227, 249);
+}
 
-  .btn:hover{
-    color: black;
-    background-color: white;
-  }
+.button:hover {
+  color: black;
+  background-color: white;
+}
 
-  .image {
+.btn {
+  color: black;
+  background-color: rgb(127, 227, 249);
+}
+
+.btn:hover {
+  color: black;
+  background-color: white;
+}
+
+.image {
   position: relative;
   max-width: 800px;
   margin: 0 auto;
@@ -77,7 +77,7 @@ body {
 .image img {
   vertical-align: middle;
   max-width: 100%;
-  height: auto; 
+  height: auto;
 }
 
 .image .content {
@@ -87,5 +87,5 @@ body {
   color: #f1f1f1;
   width: 100%;
   padding: 20px;
-  box-sizing: border-box; 
-}  
+  box-sizing: border-box;
+}
