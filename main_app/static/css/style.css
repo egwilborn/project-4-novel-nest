@@ -30,7 +30,7 @@ footer.page-footer {
   box-shadow: 4px 4px 4px 4px slategrey;
   text-align: center;
   padding: 16px;
-  border-radius: 1vmin;
+  border-radius: 2vmin;
   background-color: lemonchiffon;
   color: black;
   transition: all 0.3s ease;
@@ -41,7 +41,7 @@ footer.page-footer {
 }
 
 .card:hover {
-  box-shadow: 1vmin 1vmin 1vmin 1vmin slategrey;
+  box-shadow: 1.5vmin 1.5vmin 1.5vmin 1.5vmin slategrey;
   border-radius: 2vmin;
 }
 
@@ -60,12 +60,12 @@ a {
 
 .btn {
   color: black;
-  background-color: rgb(127, 227, 249);
+  background-color: rgb(103, 227, 254);
 }
 
 .btn:hover {
   color: black;
-  background-color: white;
+  background-color: rgb(249, 249, 249);
 }
 
 .image {
