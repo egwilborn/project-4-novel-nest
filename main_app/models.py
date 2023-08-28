@@ -6,6 +6,7 @@ class Genre(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField(max_length=500)
     subscribers = models.ManyToManyField(User)
+    img_url = models.CharField(max_length=100)
 
 class CreditCard(models.Model):
     number = models.IntegerField()
