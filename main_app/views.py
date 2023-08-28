@@ -65,7 +65,7 @@ class GenreDetail(LoginRequiredMixin, DetailView):
         genre_title = genre.title
         key_word = genre_title.replace(" ", "_")
 
-        url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{key_word}&printType=books&key=AIzaSyByQxL6mHiDUzsnosow3-ZDL93vt9NIHKs"
+        url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{key_word}&printType=books&maxResults=9&key=AIzaSyByQxL6mHiDUzsnosow3-ZDL93vt9NIHKs"
         response = requests.get(url)
         data = response.json()
         context['data'] = data
