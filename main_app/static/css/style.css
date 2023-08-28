@@ -6,7 +6,7 @@ body {
   font-family: Arial, sans-serif;
   justify-content: center;
   background-color: powderblue;
-  background-image: radial-gradient(rgb(171, 145, 243), powderblue);
+  background-image: radial-gradient(powderblue , rgb(216, 203, 251));
 }
 
 main {
@@ -36,7 +36,7 @@ footer.page-footer {
   text-align: center;
   padding: 16px;
   border-radius: 2vmin;
-  background-color: lemonchiffon;
+  background-color: snow;
   color: black;
   transition: all 0.3s ease;
 }
@@ -61,7 +61,7 @@ footer.page-footer {
 
 .btn {
   color: black;
-  background-color: rgb(103, 227, 254);
+  background-color: rgb(197, 234, 240);
 }
 
 .btn:hover {
