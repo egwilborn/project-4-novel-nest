@@ -5,8 +5,8 @@ body {
   margin: 0;
   font-family: Arial, sans-serif;
   justify-content: center;
-  background-color: snow;
-  background-image: radial-gradient(snow, powderblue);
+  background-color: powderblue;
+  background-image: radial-gradient(rgb(171, 145, 243), powderblue);
 }
 
 main {
