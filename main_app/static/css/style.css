@@ -26,6 +26,11 @@ footer.page-footer {
   color: black;
 }
 
+.logo-img{
+  float: left;
+  width: 50%;
+}
+
 .card {
   box-shadow: 4px 4px 4px 4px slategrey;
   text-align: center;
@@ -43,10 +48,6 @@ footer.page-footer {
 .card:hover {
   box-shadow: 1.5vmin 1.5vmin 1.5vmin 1.5vmin slategrey;
   border-radius: 2vmin;
-}
-
-a {
-  color: blue;
 }
 
 .button {
