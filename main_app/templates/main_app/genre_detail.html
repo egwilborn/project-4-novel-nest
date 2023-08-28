@@ -11,26 +11,26 @@
       align-items: center;
     "
   >
-    <div class="card" style="background-color: white; width: 60vw">
-      <div class="card-content">
-        <span class="card-title">{{ genre.title }}</span>
-        <p>Description: {{ genre.description }}</p>
-        <a href="{% url 'creditcard' genre.id %}">Subscribe</a>
+    <div class="card" style="background-color: white; width: 70vw">
+      <span class="card-title">{{ genre.title }}</span>
+      <div style="display: flex; justify-content: center; align-items: center">
+        <img src="{{genre.img_url}}" style="width: 40%" />
+        <div class="card-content">
+          <p style="font-size: 125%; text-align: left">
+            {{ genre.description }}
+          </p>
+        </div>
+      </div>
+      <div class="card-action">
+        <a style="font-size: 125%" href="{% url 'creditcard' genre.id %}"
+          >Subscribe</a
+        >
       </div>
     </div>
   </div>
 </div>
 
-<div
-  class="row"
-  style="
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-wrap: wrap;
-  "
->
+<div class="row">
   {% for item in data.items %}
   <div class="col s4">
     <div class="card">
