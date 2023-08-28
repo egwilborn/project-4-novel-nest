@@ -33,56 +33,58 @@
 <div class="row">
   {% for item in data.items %}
   <div class="col s4">
-    <div class="card">
-      <div class="card-content center">
-        <div class="card-image">
-          <img
-            style="height: 220px"
-            src="{{ item.volumeInfo.imageLinks.smallThumbnail }}"
-            alt="book thumbnail"
-          />
-        </div>
-        {% if item.volumeInfo.title|length < 50 %}
-        <span
-          style="
-            height: 52px;
-            margin-bottom: 5px;
-            margin-top: 5px;
-            font-size: 110%;
-            font-weight: bold;
-            line-height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-          "
-          class="card-title"
-          >{{ item.volumeInfo.title }}</span
-        >
-        {% else %}
-        <span
-          style="
-            height: 52px;
-            margin-bottom: 5px;
-            margin-top: 10px;
-            font-size: 110%;
-            font-weight: bold;
-            line-height: 100%;
-          "
-          class="card-title"
-          >{{ item.volumeInfo.title|slice:":50" }}... </span
-        >{% endif %}
-        <div style="height: 40px">
-          by
-          <span>{{ item.volumeInfo.authors.0 }}</span> <br />
-          <span>{{ item.volumeInfo.authors.1 }}</span>
+    <a href="{{item.volumeInfo.infoLink}}">
+      <div class="card">
+        <div class="card-content center">
+          <div class="card-image">
+            <img
+              style="height: 220px"
+              src="{{ item.volumeInfo.imageLinks.smallThumbnail }}"
+              alt="book thumbnail"
+            />
+          </div>
+          {% if item.volumeInfo.title|length < 50 %}
+          <span
+            style="
+              height: 52px;
+              margin-bottom: 5px;
+              margin-top: 5px;
+              font-size: 110%;
+              font-weight: bold;
+              line-height: 100%;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            "
+            class="card-title"
+            >{{ item.volumeInfo.title }}</span
+          >
+          {% else %}
+          <span
+            style="
+              height: 52px;
+              margin-bottom: 5px;
+              margin-top: 10px;
+              font-size: 110%;
+              font-weight: bold;
+              line-height: 100%;
+            "
+            class="card-title"
+            >{{ item.volumeInfo.title|slice:":50" }}... </span
+          >{% endif %}
+          <div style="height: 40px">
+            by
+            <span>{{ item.volumeInfo.authors.0 }}</span> <br />
+            <span>{{ item.volumeInfo.authors.1 }}</span>
 
-          {% if item.volumeInfo.authors.2 %}
-          <span>...</span>
-          {% else %} {% endif %} {% if notloop.last %} {% endif %}
+            {% if item.volumeInfo.authors.2 %}
+            <span>...</span>
+            {% else %} {% endif %} {% if notloop.last %} {% endif %}
+          </div>
         </div>
       </div>
-    </div>
+    </a>
   </div>
   {% if loop.counter|divisibleby:3 and not forloop.last %}
 </div>

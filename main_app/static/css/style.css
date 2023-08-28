@@ -28,7 +28,7 @@ footer.page-footer {
 
 .logo-img{
   float: left;
-  width: 50%;
+  width: 100%;
 }
 
 .card {
@@ -51,7 +51,7 @@ footer.page-footer {
 }
 
 .button {
-  background-color: rgb(127, 227, 249);
+  background-color: rgb(197, 234, 240);
 }
 
 .button:hover {
