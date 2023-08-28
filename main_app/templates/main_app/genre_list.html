@@ -1,18 +1,23 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
+{% block content %}
 
 <h1 style="padding: 20px 20px 50px 20px">Genre List</h1>
-{% for genre in object_list %}
 <div class="row">
+  {% for genre in object_list %}
   <div class="col s6">
     <a href="{% url 'genres_detail' genre.id %}">
-      <div class="card">
+      <div class="card" style="height: 600px">
         <div class="card-content">
-          <img class="responsive-img" src="{{genre.img_url}}" </img>
+          <img class="responsive-img" src="{{ genre.img_url }}" alt="{{ genre.title }} Image">
           <span class="card-title">{{ genre.title }}</span>
           <p>Description: {{ genre.description }}</p>
         </div>
       </div>
     </a>
   </div>
+  {% if forloop.counter|divisibleby:2 or forloop.last %}
+</div><div class="row">
+  {% endif %}
+  {% endfor %}
 </div>
-{% endfor %} {% endblock %}
+{% endblock %}
