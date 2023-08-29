@@ -20,6 +20,7 @@ Genre detail
 <ul>
     <li>Python</li>
     <li>Django</li>
+    <li>JavaScript</li>
     <li>HTML/CSS</li>
     <li>PostgreSQL</li>
     <li>Materialize CSS</li>
