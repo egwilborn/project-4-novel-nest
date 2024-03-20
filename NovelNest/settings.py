@@ -44,7 +44,7 @@ SESSION_COOKIE_SECURE = env('SESSION_COOKIE_SECURE')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['novelnest.fly.dev', 'localhost']
+ALLOWED_HOSTS = ['novelnest.fly.dev', 'localhost', '127.0.0.1']
 CSRF_TRUSTED_ORIGINS = ['https://novelnest.fly.dev']
 
 
