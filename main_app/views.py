@@ -10,6 +10,7 @@ from django.views.generic import TemplateView
 from .models import Genre, CreditCard
 from .forms import CreditCardForm
 import requests
+import os
 
 # Create your views here.
 
@@ -64,8 +65,9 @@ class GenreDetail(LoginRequiredMixin, DetailView):
         genre = Genre.objects.get(id=pk_value)
         genre_title = genre.title
         key_word = genre_title.replace(" ", "_")
+        API_KEY = os.environ['BOOKS_API_KEY']
 
-        url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{key_word}&printType=books&maxResults=9&key=AIzaSyByQxL6mHiDUzsnosow3-ZDL93vt9NIHKs"
+        url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{key_word}&printType=books&maxResults=9&key={API_KEY}"
         response = requests.get(url)
         data = response.json()
         context['data'] = data
